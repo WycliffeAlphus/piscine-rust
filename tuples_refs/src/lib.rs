@@ -1,4 +1,4 @@
-pub struct Student(pub(u32, &str, &str));
+pub struct Student<'a>(pub(u32, &'a str, &'a str));
 
 
 pub fn id(student: &Student) -> u32 {
