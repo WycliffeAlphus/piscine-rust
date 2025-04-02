@@ -5,11 +5,11 @@ pub fn id(student: &Student) -> u32 {
     student.0.0
 }
 
-pub fn first_name(student: &Student) -> &str {
+pub fn first_name(student: &'a Student) -> &'a str {
     &student.0.1
 }
 
-pub fn last_name(student: &Student) -> &str {
+pub fn last_name(student: &'a Student) -> &'a str {
     &student.0.2
 }
 
