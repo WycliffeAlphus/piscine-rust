@@ -1,16 +1,18 @@
-pub struct Student<'a>(pub(u32, &'a str, &'a str));
+pub struct Student<'a>(pub u32, pub &'a str, pub &'a str);
 
 
 pub fn id(student: &Student) -> u32 {
-    student.0.0
+    student.0
 }
 
-pub fn first_name<'a>(student: &'a Student) -> &'a str {
-    &student.0.1
+
+pub fn first_name(student: &Student) -> &str {
+    student.1
 }
 
-pub fn last_name<'a>(student: &'a Student) -> &'a str {
-    &student.0.2
+
+pub fn last_name(student: &Student) -> &str {
+    student.2
 }
 
 
