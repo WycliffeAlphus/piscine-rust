@@ -1,14 +1,14 @@
-pub struct Student<'a>(pub u32, pub &'a String, pub &'a String);
+pub struct Student(pub u32, pub String, pub String);
 
 pub fn id(student: &Student) -> u32 {
     student.0
 }
 
-pub fn first_name<'a>(student: &'a Student<'a>) -> &'a str {
+pub fn first_name(student:  &Student) ->  &str {
     &student.1
 }
 
-pub fn last_name<'a>(student: &'a Student<'a>) -> &'a str {
+pub fn last_name(student: &Student) -> &str {
     &student.2
 }
 
@@ -22,7 +22,7 @@ pub fn last_name<'a>(student: &'a Student<'a>) -> &'a str {
 //     static FIRST: String = "Wycliffe".to_string();
 //     static SECOND: String = "Onyango".to_string();
     
-//     static STUDENT: Student = Student(20, &FIRST, &SECOND);
+//     static STUDENT: Student = Student(20, FIRST.clone(), SECOND.clone());
     
 //     #[test]
 //     fn test_id() {
