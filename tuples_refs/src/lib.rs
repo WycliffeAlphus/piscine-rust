@@ -1,4 +1,4 @@
-pub struct Student<'a>(pub u32, pub &'a str, pub &'a str);
+pub struct Student<'a>(pub u32, pub &'a String, pub &'a String);
 
 pub fn id(student: &Student) -> u32 {
     student.0
@@ -19,8 +19,8 @@ pub fn last_name<'a>(student: &'a Student<'a>) -> &'a str {
 mod tests {
     use super::*;
     
-    const FIRST: &str = "Wycliffe";
-    const SECOND: &str = "Onyango";
+    const FIRST: String = "Wycliffe";
+    const SECOND: String = "Onyango";
     
     const STUDENT: Student = Student(20, FIRST, SECOND);
     
