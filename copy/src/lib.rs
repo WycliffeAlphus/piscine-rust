@@ -11,9 +11,10 @@ let b = a.chars();
 let mut vecs:Vec<String> = Vec::new(); 
 
 for ex in b {
-    let Some(digit) = ex.to_digit(10) else {panic!("Not a number")};
-   let rs = (digit as f64).exp().to_string();
-    vecs.push(rs);
+    if let Some(digit) = ex.to_digit(10) {
+        let rs = (digit as f64).exp().to_string();
+        vecs.push(rs);
+    } 
 }
 let s = vecs.join(" ");
 (a, s)
