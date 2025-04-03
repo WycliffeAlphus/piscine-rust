@@ -7,14 +7,14 @@ let mut i = 0;
             s.remove(i-1);
             i-=1;
         }
-    }
-
-    if c == '+' {
+    } else if c == '+' {
         if i+1 < s.len(){
             s.remove(i+1);
         }
+    } else {
+        i+=1
     }
-    i+=1
+  
 }
 
 }
