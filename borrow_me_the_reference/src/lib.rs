@@ -1,5 +1,5 @@
 pub fn delete_and_backspace(s: &mut String) {
-    let mut chars:Vec<String> = s.chars().collect();
+    let mut chars: Vec<char> = s.chars().collect();
     let mut i = chars.len();
     while i > 0 {
         i -= 1;
@@ -10,14 +10,14 @@ pub fn delete_and_backspace(s: &mut String) {
             }
         }
     }
-    let mut j = 0;
-    while j < chars.len() {
-        if chars[j] == '-' {
-            if j > 0 {
-                chars.remove(j - 1);
-                j -= 1;
+    i = 0;
+    while i < chars.len() {
+        if chars[i] == '-' {
+            if i > 0 {
+                chars.remove(i - 1);
+                i -= 1;
             }
-            chars.remove(j);
+            chars.remove(i);
         } else {
             i += 1;
         }
