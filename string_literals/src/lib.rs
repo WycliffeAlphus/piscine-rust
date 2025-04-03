@@ -15,8 +15,12 @@ if pat.len() == 0 {
 let v_bytes = v.as_bytes();
 let pat_bytes = pat.as_bytes();
 
+if pat_bytes.len() > v_bytes.len(){
+    return false;
+}
+
 for i in 0..= v_bytes.len() - pat_bytes.len(){
-    if v_bytes[i..i+v_bytes.len()].eq(pat_bytes){
+    if v_bytes[i..i+pat_bytes.len()].eq(pat_bytes){
         return true;
     }
 }
