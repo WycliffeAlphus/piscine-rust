@@ -1,28 +1,27 @@
 pub fn delete_and_backspace(s: &mut String) {
-let mut i = 0;
-  while i < s.len(){
-    let c = s[i..].chars().next().unwrap();
-    if c == '-' {
-        if i > 0{
-            s.remove(i-1);
-            s.remove(i-1);
-            i = i.saturating_sub(1);
+    let mut i = 0;
+    while i < s.len() {
+        let c = s.chars().nth(i).unwrap();
+        
+        if c == '-' {
+         
+            s.remove(i); 
+            if i > 0 {
+                i -= 1; 
+                s.remove(i); 
+            }
+        } else if c == '+' {
+            
+            s.remove(i); 
+            if i < s.len() {
+                s.remove(i);
+            }
         } else {
-            s.remove(i);
+            i += 1; 
         }
-    } else if c == '+' {
-        s.remove(i);
-        if i < s.len(){
-           s.remove(i);
-        }
-    } else {
-        i +=1;
-  
     }
-
 }
 
-}
 
 pub fn do_operations(v: &mut [String]) {
  let mut prev = 0;
