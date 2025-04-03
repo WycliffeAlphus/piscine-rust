@@ -5,17 +5,21 @@ let mut i = 0;
     if c == '-' {
         if i > 0{
             s.remove(i-1);
-            continue;
+            s.remove(i-1);
+            i = i.saturating_sub(1);
+        } else {
+            s.remove(i);
         }
     } else if c == '+' {
-        if i+1 < s.len(){
-            s.remove(i+1);
-            continue;
+        s.remove(i);
+        if i < s.len(){
+           s.remove(i);
         }
+    } else {
+        i +=1;
+  
     }
 
-    i +=1;
-  
 }
 
 }
