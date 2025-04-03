@@ -5,15 +5,16 @@ let mut i = 0;
     if c == '-' {
         if i > 0{
             s.remove(i-1);
-            i-=1;
+            continue;
         }
     } else if c == '+' {
         if i+1 < s.len(){
             s.remove(i+1);
+            continue;
         }
-    } else {
-        i+=1
     }
+
+    i +=1;
   
 }
 
