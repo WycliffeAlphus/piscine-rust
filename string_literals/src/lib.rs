@@ -7,12 +7,20 @@ pub fn is_ascii(v: &str) -> bool {
 }
 
 pub fn contains(v: &str, pat: &str) -> bool {
-  for item in v.chars() {
-    if item == pat {
+
+if pat.len() == 0 {
+    return true;
+}
+ 
+let v_bytes = v.as_bytes();
+let pat_bytes = pat.as_bytes();
+
+for i in 0..= v_bytes.len() - pat_bytes.len(){
+    if v_bytes[i..i+v_bytes.len()].eq(pat_bytes){
         return true;
     }
-  }
-  return false
+}
+return false
 }
 
 pub fn split_at(v: &str, index: usize) -> (&str, &str) {
@@ -20,5 +28,5 @@ pub fn split_at(v: &str, index: usize) -> (&str, &str) {
 }
 
 pub fn find(v: &str, pat: char) -> usize {
-    v.chars().position(|p| p == pat)
+    v.chars().position(|p| p == pat).unwrap_or(usize::MAX)
 }
