@@ -1,25 +1,29 @@
 pub fn delete_and_backspace(s: &mut String) {
-    let mut i = 0;
-    while i < s.len() {
-        let c = s.chars().nth(i).unwrap();
-        
-        if c == '-' {
-         
-            s.remove(i); 
-            if i > 0 {
-                i -= 1; 
-                s.remove(i); 
+    let mut chars:Vec<String> = s.chars().collect();
+    let mut i = chars.len();
+    while i > 0 {
+        i -= 1;
+        if chars[i] == '+' {
+            chars.remove(i);
+            if i < chars.len() {
+                chars.remove(i);
             }
-        } else if c == '+' {
-            
-            s.remove(i); 
-            if i < s.len() {
-                s.remove(i);
-            }
-        } else {
-            i += 1; 
         }
     }
+    let mut j = 0;
+    while j < chars.len() {
+        if chars[j] == '-' {
+            if j > 0 {
+                chars.remove(j - 1);
+                j -= 1;
+            }
+            chars.remove(j);
+        } else {
+            i += 1;
+        }
+    }
+
+    *s = chars.into_iter().collect();
 }
 
 
