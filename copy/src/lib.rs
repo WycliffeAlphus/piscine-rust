@@ -11,10 +11,10 @@ let b = a.chars();
 let mut vecs:Vec<String> = Vec::new(); 
 
 for ex in b {
-    (ex as u8 as f64).exp().to_string();
-    vecs.push(ex.to_string());
+   let rs = (ex as u8 as f64).exp().to_string();
+    vecs.push(rs.to_string());
 }
-let s = vecs.join(",");
+let s = vecs.join(" ");
 (a, s)
 }
 
