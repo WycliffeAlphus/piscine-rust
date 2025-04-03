@@ -11,8 +11,9 @@ let b = a.chars();
 let mut vecs:Vec<String> = Vec::new(); 
 
 for ex in b {
-   let rs = (ex as u8 as f64).exp().to_string();
-    vecs.push(rs.to_string());
+    let Some(digit) = ex.to_digit(10) else {panic!("Not a number")};
+   let rs = (digit as f64).exp().to_string();
+    vecs.push(rs);
 }
 let s = vecs.join(" ");
 (a, s)
