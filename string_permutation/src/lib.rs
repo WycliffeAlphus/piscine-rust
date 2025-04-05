@@ -1,14 +1,17 @@
-pub fn add(left: u64, right: u64) -> u64 {
-    left + right
-}
+use std::collections::HashMap;
 
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn it_works() {
-        let result = add(2, 2);
-        assert_eq!(result, 4);
+pub fn is_permutation(s1: &str, s2: &str) -> bool {
+    if s1.len() != s2.len() {
+        return false;
     }
+
+    fn char_count_map(s: &str) -> HashMap<char, usize> {
+        let mut map = HashMap::new();
+        for c in s.chars() {
+            *map.entry(c).or_insert(0) += 1;
+        }
+        map
+    }
+
+    char_count_map(s1) == char_count_map(s2)
 }
