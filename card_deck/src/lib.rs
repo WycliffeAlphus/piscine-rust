@@ -15,13 +15,14 @@ impl Suit {
             2 => Some(Suit::Diamond),
             3 => Some(Suit::Spade),
             4 => Some(Suit::Club),
+            _ => None,
         }
     }
 
     pub fn random() -> Suit {
         let seed = current_time_seed();
         let value = (seed % 4 + 1) as u8; // 1..=4
-        Suit::translate(value).unwrap()
+        Suit::translate(value).expect("invalid suit value")
     }
 }
 
@@ -42,13 +43,14 @@ impl Rank {
             11 => Some(Rank::Jack),
             12 => Some(Rank::Queen),
             13 => Some(Rank::King),
+            _ => None,
         }
     }
 
     pub fn random() -> Rank {
         let seed = current_time_seed();
         let value = (seed % 13 + 1) as u8; // 1..=13
-        Rank::translate(value).unwrap()
+        Rank::translate(value).expect("invalid suit value")
     }
 }
 
