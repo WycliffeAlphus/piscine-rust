@@ -1,22 +1,11 @@
 use std::collections::HashMap;
-
-pub fn word_frequency_counter(words: Vec<&str>) -> HashMap<&str, usize> {
-
-    let mut res :HashMap<&str, usize> = HashMap::new();
-
-    for word in words{
-        if res.contains_key(word){
-            if let Some(value) = res.get_mut(word){
-                *value +=1;
-            }
-        } else {
-            res.insert(word, 1);
-        }
-        
+pub fn word_frequency_counter<'a>(words: &'a [&'a str]) -> HashMap<&'a str, usize> {
+    let mut res: HashMap<&'a str, usize> = HashMap::new();
+    for word in words {
+        *res.entry(word).or_insert(0) += 1;
     }
-res
+    res
 }
-
 pub fn nb_distinct_words(frequency_count: &HashMap<&str, usize>) -> usize {
 
     let mut uniq = 0;
