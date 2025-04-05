@@ -1,5 +1,5 @@
 [package]
-name = "cargo_deck"
+name = "card_deck"
 version = "0.1.0"
 edition = "2024"
 
