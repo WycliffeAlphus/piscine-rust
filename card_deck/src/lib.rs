@@ -15,7 +15,7 @@ impl Suit {
             2 => Some(Suit::Diamond),
             3 => Some(Suit::Spade),
             4 => Some(Suit::Club),
-            _ => None,
+            _ => panic!("Invalid suit value: {}", n),
         }
     }
 
@@ -43,7 +43,7 @@ impl Rank {
             11 => Some(Rank::Jack),
             12 => Some(Rank::Queen),
             13 => Some(Rank::King),
-            _ => None,
+            _ => panic!("Invalid rank value: {}", n),
         }
     }
 
