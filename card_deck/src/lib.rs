@@ -9,20 +9,20 @@ pub enum Suit {
 }
 
 impl Suit {
-    pub fn translate(value: u8) -> Option<Suit> {
+    pub fn translate(value: u8) -> Suit {
         match value {
-            1 => Some(Suit::Heart),
-            2 => Some(Suit::Diamond),
-            3 => Some(Suit::Spade),
-            4 => Some(Suit::Club),
-            _ => None,
+            1 => Suit::Heart,
+            2 => Suit::Diamond,
+            3 => Suit::Spade,
+            4 => Suit::Club,
+            _ => panic!("Invalid suit value: {}", value),
         }
     }
 
     pub fn random() -> Suit {
         let seed = current_time_seed();
         let value = (seed % 4 + 1) as u8; // 1..=4
-        Suit::translate(value).expect("invalid suit value")
+        Suit::translate(value)
     }
 }
 
@@ -36,21 +36,21 @@ pub enum Rank {
 }
 
 impl Rank {
-    pub fn translate(value: u8) -> Option<Rank> {
+    pub fn translate(value: u8) -> Rank {
         match value {
-            1 => Some(Rank::Ace),
-            2..=10 => Some(Rank::Number(value)),
-            11 => Some(Rank::Jack),
-            12 => Some(Rank::Queen),
-            13 => Some(Rank::King),
-            _ => None,
+            1 => Rank::Ace,
+            2..=10 => Rank::Number(value),
+            11 => Rank::Jack,
+            12 => Rank::Queen,
+            13 => Rank::King,
+            _ => panic!("Invalid rank value: {}", value),
         }
     }
 
     pub fn random() -> Rank {
         let seed = current_time_seed();
         let value = (seed % 13 + 1) as u8; // 1..=13
-        Rank::translate(value).expect("invalid suit value")
+        Rank::translate(value)
     }
 }
 
