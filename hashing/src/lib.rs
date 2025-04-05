@@ -1,3 +1,5 @@
+use std::collections::HashMap;
+
 pub fn mean(list: &[i32]) -> f64 {
 
     let sum:i32 = list.iter().sum();
