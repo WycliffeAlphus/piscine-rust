@@ -11,7 +11,7 @@ pub fn title_case(input: &str) -> String {
 
     input
         .split_whitespace()
-        .map(|word| capitalize_first(word))
+        .map(|word| capitalize_first(word.trim()))
         .collect::<Vec<String>>()
         .join(" ")
 }
