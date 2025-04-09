@@ -4,9 +4,9 @@ pub use chrono::{NaiveDate, Utc};
 
 #[derive(Debug, Eq, PartialEq)]
 pub struct FormError {
-   form_values: (&'static str, String),
-   date: String,
-   err: &'static str,
+   pub form_values: (&'static str, String),
+   pub date: String,
+   pub err: &'static str,
 }
 
 impl FormError {
