@@ -16,6 +16,6 @@ impl One {
         self.first_layer?
             .second_layer?
             .third_layer?
-            .fourth_layer?
+            .fourth_layer
     }
 }
