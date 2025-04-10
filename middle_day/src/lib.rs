@@ -1,6 +1,6 @@
-use chrono::{NaiveDate, Weekday as wd}
+use chrono::{NaiveDate, Weekday as wd};
 
-fn middle_day(year: i32)Option<wd>{
+fn middle_day(year: i32)->Option<wd>{
   let is_leap = (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
 
   if is_leap {
