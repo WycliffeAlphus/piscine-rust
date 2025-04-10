@@ -7,7 +7,7 @@ fn middle_day(year: i32)->Option<wd>{
     return None;
   }
   let date = NaiveDate::from_yo_opt(year, 184)?;
-  Some(date.Weekday())
+  Some(date.weekday())
 }
 
 
