@@ -15,7 +15,7 @@ let is_yelling = trimmed
     .all(|c| c.is_uppercase());
 
     match (is_question, is_yelling) {
-        (true, true) => "Quiet. I am thinking!",
+        (true, true) => "Quiet, I am thinking!",
         (true, false) => "Sure.",
         (false, true) => "There is no need to yell, calm down!",
         _=> "Interesting",
