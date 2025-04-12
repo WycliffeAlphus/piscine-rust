@@ -2,7 +2,7 @@ pub fn scytale_cipher(message: String, i: u32) -> String {
     let cols = i as usize;
     let chars: Vec<char> = message.chars().collect();
     let len = chars.len();
-    let rows = (len as f32 / cols as f32).ceil() as usize;
+    let rows = ((len as f32) / (cols as f32)).ceil() as usize;
 
     // Fill the grid row by row
     let mut grid = vec![vec![' '; cols]; rows];
@@ -17,9 +17,7 @@ pub fn scytale_cipher(message: String, i: u32) -> String {
     for col in 0..cols {
         for row in 0..rows {
             let ch = grid[row][col];
-            if ch != ' ' {
-                result.push(ch);
-            }
+            result.push(ch);
         }
     }
 
