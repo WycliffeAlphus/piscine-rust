@@ -5,7 +5,7 @@ pub fn is_pangram(s: &str) -> bool {
 let mut map = HashMap::new();
 
 for c in s.chars() {
-    if c.is_alphabetic() {
+    if c.is_ascii_alphabetic() {
         map.insert(c.to_ascii_lowercase(), true);
     }
 }
