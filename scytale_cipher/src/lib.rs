@@ -19,10 +19,7 @@ pub fn scytale_cipher(message: String, i: u32) -> String {
             let ch = grid[row][col];
             result.push(ch);
         }
-        if result.len() == len {
-            break;
-        }
     }
 
-    result
+    result.trim()
 }
