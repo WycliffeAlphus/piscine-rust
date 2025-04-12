@@ -16,6 +16,9 @@ pub fn scytale_cipher(message: String, i: u32) -> String {
     let mut result = String::new();
     for col in 0..cols {
         for row in 0..rows {
+            if result.len() != len {
+                break;
+            }
             let ch = grid[row][col];
             result.push(ch);
         }
