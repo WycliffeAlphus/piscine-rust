@@ -41,8 +41,11 @@ impl GameSession {
         }
     
       
-    
-        if self.p1.1 > self.nb_games || self.p2.1 > self.nb_games {
+        let total_games = self.nb_games + self.p1.1 + self.p2.1;
+        let win_threshold = (total_games / 2) + 1;
+
+
+        if self.p1.1 >= win_threshold || self.p2.1 >= win_threshold {
             self.nb_games = 0; 
         } else {
             self.nb_games -= 1; 
