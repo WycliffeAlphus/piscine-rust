@@ -1,14 +1,19 @@
 pub fn transform_and_save_on_heap(s: String) -> Box<Vec<u32>> {
+    let mut res = Vec::<u32>::new();
+    let splitted: Vec<&str> = s.split_whitespace().collect();
 
-   let mut res = Vec::<u32>::new();
-   let mut new = s.to_owned();
-    if new.ends_with('k'){
-        new.pop();
-        res.push(s.parse::<u32>().unwrap() * (1000 as u32));
-        return Box::new(res);
+    for word in splitted {
+        if word.ends_with('k') {
+          
+            let mut temp = word.to_string(); 
+            temp.pop();                      
+            let num = temp.parse::<f64>().unwrap(); 
+            res.push((num * 1000.0) as u32);
+        } else {
+            let num = word.parse::<u32>().unwrap();
+            res.push(num);
+        }
     }
-
-    res.push(new.parse::<u32>().unwrap());
 
     Box::new(res)
 }
