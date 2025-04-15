@@ -10,8 +10,8 @@ pub fn transform_and_save_on_heap(s: String) -> Box<Vec<u32>> {
             let num = temp.parse::<f64>().unwrap(); 
             res.push((num * 1000.0) as u32);
         } else {
-            let num = word.parse::<u32>().unwrap();
-            res.push(num);
+            let num = word.parse::<f64>().unwrap();
+            res.push((num)as u32);
         }
     }
 
