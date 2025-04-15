@@ -30,20 +30,25 @@ impl GameSession {
 
 
     pub fn update_score(&mut self, user_name: String) {
-        if self.nb_games as i16 > 0 {
-            if user_name == self.p1.0{
-                self.p1.1 += 1;
-            } 
-            
-            if  user_name == self.p2.0{
-                self.p2.1 += 1;
-            }
-        }
-        if self.nb_games != 0 {
-            self.nb_games -= 1;
+        if self.nb_games == 0 {
+            return; 
         }
         
+        if user_name == self.p1.0 {
+            self.p1.1 += 1;
+        } else if user_name == self.p2.0 {
+            self.p2.1 += 1;
+        }
+    
+      
+    
+        if self.p1.1 > self.nb_games || self.p2.1 > self.nb_games {
+            self.nb_games = 0; 
+        } else {
+            self.nb_games -= 1; 
+        }
     }
+    
 
 
 
