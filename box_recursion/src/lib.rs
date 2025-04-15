@@ -3,10 +3,7 @@ pub struct WorkEnvironment {
     pub grade: Link,
 }
 
-pub enum Link = {
-    Cons(Worker, Box<Link>),
-    None,
-}
+pub type Link = Option<Box<Worker>>;
 
 #[derive(Debug)]
 pub struct Worker {
@@ -22,28 +19,26 @@ impl WorkEnvironment {
         }
     }
     pub fn add_worker(&mut self, role: String, name: String) {
-        let wk = Worker{
-            role:role,
-            name: string,
-        }
-        let current = std::mem::replace(&mut self.grade, Link::None);
-        self.grade = Link::Cons(wk, Box::new(current))
+    
+        let new_worker = Box::new(Worker{
+            role,
+            name,
+            next: self.grade.take(),
+        });
+        self.grade = Some(new_worker);
     }
     pub fn remove_worker(&mut self) -> Option<String> {
-        match std::mem::replace(&mut self.grade, Link::None) {
-            Link::Cons(worker, next_link) => {
-                self.grade = *next_link; 
-                Some(worker.name)
-            }
-            Link::None => None,
-        }  
-
+        if let Some(worker) = self.grade.take() {
+            self.grade = worker.next;
+            Some(worker.name)
+        }else {
+            None
+        }
     }
     pub fn last_worker(&self) -> Option<(String, String)> {
-        match &self.grade {
-            Link::Cons(worker, _) => Some((worker.name.clone(), worker.role.clone())),
-            Link::None => None,
-        }
+        self.grade
+            .as_ref()
+            .map(|worker| (worker.name.clone(), worker.role.clone()))
     }
 }
 
