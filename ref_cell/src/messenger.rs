@@ -35,7 +35,7 @@ impl<'a> Tracker<'a> {
 
     pub fn peek<T>(&self, tracked: &std::rc::Rc<T>) {
         let count = std::rc::Rc::strong_count(tracked);
-        let percent = (count as f64 / self.max as f64) * 100.0;
+        let percent = ((count as f64 / self.max as f64) * 100.0).round();
         self.logger.info(&format!(
             "you are using up to {:.0}% of your quota",
             percent
