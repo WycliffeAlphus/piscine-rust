@@ -27,7 +27,7 @@ impl<'a> Tracker<'a> {
             self.logger.error("you are over your quota!");
         } else if percent >= 70.0 {
             self.logger.warning(&format!(
-                "Warning: you have used up over {:.0}% of your quota! Proceeds with precaution",
+                "you have used up over {:.0}% of your quota! Proceeds with precaution",
                 percent
             ));
         }
