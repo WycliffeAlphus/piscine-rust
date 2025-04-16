@@ -7,13 +7,13 @@ mod messenger;
 pub use messenger::{Logger, Tracker};
 
 pub struct Worker {
-    pub track_value: Rc<u8>,
+    pub track_value: Rc<u64>,
     pub mapped_messages: RefCell<HashMap<String, String>>,
     pub all_messages: RefCell<Vec<String>>,
 }
 
 impl Worker {
-    pub fn new(value: u8) -> Self {
+    pub fn new(value: u64) -> Self {
         Self {
             track_value: Rc::new(value),
             mapped_messages: RefCell::new(HashMap::new()),
