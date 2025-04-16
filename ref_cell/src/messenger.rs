@@ -37,7 +37,7 @@ impl<'a> Tracker<'a> {
         let count = std::rc::Rc::strong_count(tracked);
         let percent = ((count as f64 / self.max as f64) * 100.0).floor();
         self.logger.info(&format!(
-            "Info: you are using up to {:.0}% of your quota",
+            "you are using up to {:.0}% of your quota",
             percent
         ));
     }
