@@ -27,7 +27,7 @@ impl<'a> Tracker<'a> {
             self.logger.error("Error: you are over your quota!");
         } else if percent >= 70.0 {
             self.logger.warning(&format!(
-                "Warning: you have used up over {:.0}% of your quota! Proceeds with precaution",
+                "you have used up over {:.0}% of your quota! Proceeds with precaution",
                 percent
             ));
         }
@@ -37,7 +37,7 @@ impl<'a> Tracker<'a> {
         let count = std::rc::Rc::strong_count(tracked);
         let percent = (count as f64 / self.max as f64) * 100.0;
         self.logger.info(&format!(
-            "Info: you are using up to {:.0}% of your quota",
+            "you are using up to {:.0}% of your quota",
             percent
         ));
     }
