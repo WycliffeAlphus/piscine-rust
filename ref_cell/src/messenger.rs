@@ -21,7 +21,7 @@ impl<'a> Tracker<'a> {
 
     pub fn set_value<T>(&self, tracked: &std::rc::Rc<T>) {
         let count = std::rc::Rc::strong_count(tracked);
-        let percent = ((count as f64 / self.max as f64) * 100.0).round();
+        let percent = ((count as f64 / self.max as f64) * 100.0).floor();
 
         if percent >= 100.0 {
             self.logger.error("you are over your quota!");
@@ -35,9 +35,9 @@ impl<'a> Tracker<'a> {
 
     pub fn peek<T>(&self, tracked: &std::rc::Rc<T>) {
         let count = std::rc::Rc::strong_count(tracked);
-        let percent = ((count as f64 / self.max as f64) * 100.0).round();
+        let percent = ((count as f64 / self.max as f64) * 100.0).floor();
         self.logger.info(&format!(
-            "you are using up to {:.0}% of your quota",
+            "Info: you are using up to {:.0}% of your quota",
             percent
         ));
     }
