@@ -1,7 +1,7 @@
 
 use std::collections::HashMap;
-use std::cell::RefCell;
-use std::rc::Rc;
+pub use std::cell::RefCell;
+pub use std::rc::Rc;
 
 mod messenger;
 pub use messenger::{Logger, Tracker};
