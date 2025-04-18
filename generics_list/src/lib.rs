@@ -30,13 +30,14 @@ impl<T> List<T> {
 
     pub fn len(&self) -> usize {
         let mut count = 0;
-        let mut current = &self.head;
-
+        let mut current = self.head.as_ref();
+    
         while let Some(node) = current {
             count += 1;
-            current = &node.next.as_deref();
+            current = node.next.as_ref().map(|boxed| &**boxed);
         }
-
+    
         count
     }
+    
 }
