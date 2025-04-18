@@ -42,10 +42,17 @@ impl Player {
     }
 }
 
+
 impl fmt::Display for Player {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         writeln!(f, "{}", self.name)?;
-        writeln!(f, "Strength: {:.1}, Score: {}, Money: {}", self.strength, self.score, self.money)?;
-        write!(f, "Weapons: {}", self.weapons.join(", "))
+        writeln!(
+            f,
+            "Strength: {}, Score: {}, Money: {}",
+            self.strength as i64, 
+            self.score,
+            self.money
+        )?;
+        writeln!(f, "Weapons: {:?}", self.weapons) 
     }
 }
