@@ -17,9 +17,7 @@ impl<T: Clone> List<T> {
     pub fn push(&mut self, value: T) {
         let new = Node {
             value,
-            next: self.head.take().map(|node| {
-                Box::new((*node).clone())
-            }),
+            next: self.head.take(), 
         };
         self.head = Some(Box::new(new));
     }
