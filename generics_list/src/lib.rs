@@ -9,7 +9,7 @@ pub struct Node<T> {
     pub next: Option<Box<Node<T>>>,  
 }
 
-impl<T> List<T> {
+impl<T: Clone> List<T> {
     pub fn new() -> List<T> {
         List { head: None }
     }
@@ -17,27 +17,26 @@ impl<T> List<T> {
     pub fn push(&mut self, value: T) {
         let new = Node {
             value,
-            next: self.head.take(),  
+            next: self.head.take().map(|node| {
+                Box::new((*node).clone())
+            }),
         };
-        self.head = Some(Box::new(new));  
+        self.head = Some(Box::new(new));
     }
 
     pub fn pop(&mut self) {
         if let Some(node) = self.head.take() {
-            self.head = node.next;  
+            self.head = node.next;
         }
     }
 
     pub fn len(&self) -> usize {
         let mut count = 0;
-        let mut current = &self.head;
+        let mut current = self.head.as_ref();
         while let Some(node) = current {
             count += 1;
-            current = &node.next;
+            current = node.next.as_ref();
         }
         count
     }
-
-   
- 
 }
