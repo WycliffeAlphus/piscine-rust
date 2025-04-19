@@ -12,6 +12,19 @@ pub trait Scalar: Add<Output = Self>
 }
 
 
+impl Scalar for u32 {
+    type Item = u32;
+
+    fn zero() -> Self::Item {
+        0
+    }
+
+    fn one() -> Self::Item {
+        1
+    }
+}
+
+
 impl Scalar for u64 {
 	type Item = u64;
 
@@ -35,6 +48,7 @@ impl Scalar for i32 {
 		1
 	}
 }
+
 
 impl Scalar for i64 {
 	type Item = i64;
