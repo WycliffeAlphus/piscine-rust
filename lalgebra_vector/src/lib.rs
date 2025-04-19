@@ -4,10 +4,8 @@ use std::clone::Clone;
 use std::cmp::PartialEq;
 use std::fmt::Debug;
 
-
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub struct Vector<T: Scalar>(pub Vec<T>);
-
 
 pub trait Scalar: 
     Add<Output = Self> + 
@@ -45,14 +43,12 @@ impl<T: Scalar> Add for Vector<T> {
     }
 }
 
-
 impl<T: Scalar> Vector<T> {
-    
     pub fn new() -> Self {
         Vector(Vec::new())
     }
 
-
+ 
     pub fn dot(&self, other: &Self) -> Option<T> {
         if self.0.len() != other.0.len() {
             return None;
@@ -65,5 +61,18 @@ impl<T: Scalar> Vector<T> {
                  .map(|(a, b)| a * b)
                  .sum()
         )
+    }
+
+    pub fn try_add(&self, other: &Self) -> Option<Self> {
+        if self.0.len() != other.0.len() {
+            return None;
+        }
+
+        let data = self.0.iter()
+                         .cloned()
+                         .zip(other.0.iter().cloned())
+                         .map(|(a, b)| a + b)
+                         .collect();
+        Some(Vector(data))
     }
 }
