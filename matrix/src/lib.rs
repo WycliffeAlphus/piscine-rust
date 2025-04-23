@@ -1,5 +1,4 @@
-mod lagebra_scalar;
-use lagebra_scalar::Scalar;
+use crate::lagebra_scalar::Scalar;
 #[derive(Debug)]
 pub struct Matrix<T>(pub Vec<Vec<T>>);
 
