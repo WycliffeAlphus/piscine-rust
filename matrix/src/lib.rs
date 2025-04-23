@@ -1,3 +1,4 @@
+use Scalar;
 #[derive(Debug)]
 pub struct Matrix<T>(pub Vec<Vec<T>>);
 
