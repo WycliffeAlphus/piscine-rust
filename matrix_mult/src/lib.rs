@@ -87,7 +87,7 @@ impl Scalar for f64 {
 }
 
 
-#[derive(Debug, PartialEq)]
+#[derive(Debug, PartialEq, Clone)]
 pub struct Matrix<T>(pub Vec<Vec<T>>);
 
 impl <T: Scalar<Item = T>> Matrix<T> {
